@@ -1,6 +1,7 @@
 const bcryptjs = require("bcryptjs");
-const { addUser } = require("../services/user");
-const { errorResponse } = require("../utils/responses");
+const jwt = require("jsonwebtoken");
+const { addUser, getAllUsers } = require("../services/user");
+const { errorResponse, successResponse } = require("../utils/responses");
 
 exports.addUser = async (req, res, next) => {
   try {
@@ -13,6 +14,29 @@ exports.addUser = async (req, res, next) => {
     const salt = await bcryptjs.genSalt(10);
 
     const hashedPassword = await bcryptjs.hash(password, salt);
+
+    const accessToken = jwt.sign({ email }, process.env.JWT_SECRET, {
+      expiresIn: "15d",
+    });
+
+    const users = await getAllUsers();
+
+    const user = await addUser({
+      ...req.body,
+      password: hashedPassword,
+      role: users.length > 0 ? "USER" : "ADMIN",
+    });
+
+    res.cookie("accessToken", accessToken, {
+      path: "/",
+      httpOnly: true,
+      maxAge: 1200000000,
+    });
+
+    return successResponse(res, 201, {
+      user,
+      message: "User created successfully :)",
+    });
   } catch (error) {
     next(error);
   }
