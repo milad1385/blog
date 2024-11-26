@@ -1,6 +1,6 @@
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { addUser, getAllUsers } = require("../services/user");
+const { addUser, getAllUsers, deleteUser } = require("../services/user");
 const { errorResponse, successResponse } = require("../utils/responses");
 
 exports.addUser = async (req, res, next) => {
@@ -46,6 +46,23 @@ exports.getAll = async (req, res, next) => {
   try {
     const users = await getAllUsers();
     return successResponse(res, 200, users);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.delete = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return errorResponse(res, 422, "Please enter user id", {});
+    }
+
+    await deleteUser(id);
+    return successResponse(res, 200, {
+      message: "User deleted successfully :)",
+    });
   } catch (error) {
     next(error);
   }

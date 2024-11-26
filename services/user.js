@@ -19,3 +19,13 @@ exports.getAllUsers = async () => {
     return error;
   }
 };
+
+exports.deleteUser = async (id) => {
+  try {
+    const query = "DELETE FROM user WHERE id = ?";
+    const user = await db.query(query, [id]);
+    console.log(user);
+  } catch (error) {
+    next(error);
+  }
+};
