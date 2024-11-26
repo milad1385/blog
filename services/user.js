@@ -11,7 +11,8 @@ exports.addUser = async (data) => {
 
 exports.getAllUsers = async () => {
   try {
-    const query = "SELECT * FROM user";
+    const query =
+      "SELECT name , username, phone, email, role, address, age FROM user";
     const [users] = await db.query(query);
     return users;
   } catch (error) {

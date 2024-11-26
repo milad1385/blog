@@ -41,3 +41,12 @@ exports.addUser = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getAll = async (req, res, next) => {
+  try {
+    const users = await getAllUsers();
+    return successResponse(res, 200, users);
+  } catch (error) {
+    next(error);
+  }
+};
