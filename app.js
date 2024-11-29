@@ -6,7 +6,7 @@ const path = require("path");
 const { errorHandler } = require("./middlewares/errorHandler");
 const { setHeaders } = require("./middlewares/headers");
 
-const userRouter = require("./routes/user.routes");
+
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(setHeaders);
 //* Static Folders
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/user", userRouter);
+
 
 app.use((req, res) => {
   console.log("this path is not found:", req.path);
