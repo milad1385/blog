@@ -7,6 +7,8 @@ const path = require("path");
 const { errorHandler } = require("./middlewares/errorHandler");
 const { setHeaders } = require("./middlewares/headers");
 
+const authRouter = require("./routes/auth.routes");
+
 const app = express();
 
 // middlewares
@@ -24,14 +26,16 @@ app.use(
 app.use(cookie());
 app.use(flash());
 
-app.set("view engine" , "ejs");
-app.set("views" , path.join(__dirname , "views"))
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 //* Cors Policy
 app.use(setHeaders);
 
 //* Static Folders
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use("/auth", authRouter);
 
 app.use((req, res) => {
   console.log("this path is not found:", req.path);

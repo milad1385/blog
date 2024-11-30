@@ -7,4 +7,10 @@ exports.env = {
   app: {
     port: process.env.PORT,
   },
+  auth: {
+    accessTokenSecret: process.env.ACCESS_TOKEN_SECRET_KEY,
+    refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET_KEY,
+    accessTokenExpire: process.env.ACCESS_TOKEN_EXPIRES_IN_SECONDS,
+    refreshTokenExpire: process.env.REFRESH_TOKEN_EXPIRES_IN_SECONDS,
+  },
 };
