@@ -8,6 +8,7 @@ const { errorHandler } = require("./middlewares/errorHandler");
 const { setHeaders } = require("./middlewares/headers");
 
 const authRouter = require("./routes/auth.routes");
+const homeRouter = require("./routes/home.routes");
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(setHeaders);
 //* Static Folders
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/", homeRouter);
 app.use("/auth", authRouter);
 
 app.use((req, res) => {

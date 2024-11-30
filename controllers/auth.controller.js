@@ -4,6 +4,14 @@ const User = require("../services/users");
 const { registerSchema, loginSchema } = require("../validators/auth.validator");
 const { env } = require("../utils/helpers");
 
+exports.showLoginView = (req, res, next) => {
+  try {
+    return res.render("auth/login");
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.register = async (req, res, next) => {
   try {
     const { username, password, email } = req.body;
