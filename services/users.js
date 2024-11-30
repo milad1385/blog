@@ -37,7 +37,7 @@ exports.getUserById = async (userId) => {
 exports.getUserByUsername = async (username) => {
   try {
     const query =
-      "SELECT username , name , email , role , avatar , provider FROM users WHERE username = ?";
+      "SELECT * FROM users WHERE username = ?";
 
     const [user] = await db.execute(query, [username]);
 
@@ -58,9 +58,6 @@ exports.isUserExist = async ({ email, username }) => {
     return error;
   }
 };
-
-
-
 
 exports.delete = async (userId) => {
   try {

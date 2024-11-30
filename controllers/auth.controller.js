@@ -13,6 +13,7 @@ exports.register = async (req, res, next) => {
     const isUserExist = await User.isUserExist({ email, username });
 
     if (isUserExist) {
+      req.flash("error", "This user is exist already :(");
       return res.status(422).json({
         message: "This user with this email or password is exist in db",
       });
@@ -63,11 +64,13 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
+
     await loginSchema.validate({ ...req.body }, { abortEarly: false });
 
     const user = await User.getUserByUsername(username);
 
     if (!user) {
+      req.flash("error", "username or password is in correct");
       return res
         .status(422)
         .json({ message: "username or password is invalid" });
@@ -76,6 +79,7 @@ exports.login = async (req, res, next) => {
     const isValidPassword = await bcrypt.compare(password, user.password);
 
     if (!isValidPassword) {
+      req.flash("error", "username or password is in correct");
       return res
         .status(422)
         .json({ message: "username or password is invalid " });
