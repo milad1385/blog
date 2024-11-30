@@ -59,6 +59,9 @@ exports.isUserExist = async ({ email, username }) => {
   }
 };
 
+
+
+
 exports.delete = async (userId) => {
   try {
     const query = "DELETE FROM users WHERE id = ?";
