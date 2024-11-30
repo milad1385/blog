@@ -23,8 +23,7 @@ exports.create = async ({ name, username, password, email }) => {
 
 exports.getUserById = async (userId) => {
   try {
-    const query =
-      "SELECT username , name , email , role , avatar , provider FROM users WHERE id = ?";
+    const query = "SELECT * FROM users WHERE id = ?";
 
     const [user] = await db.execute(query, [userId]);
 
@@ -36,8 +35,7 @@ exports.getUserById = async (userId) => {
 
 exports.getUserByUsername = async (username) => {
   try {
-    const query =
-      "SELECT * FROM users WHERE username = ?";
+    const query = "SELECT * FROM users WHERE username = ?";
 
     const [user] = await db.execute(query, [username]);
 
