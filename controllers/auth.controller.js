@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../services/users");
-
+const { registerSchema } = require("../validators/auth.validator");
 const { env } = require("../utils/helpers");
 
 exports.register = async (req, res, next) => {
@@ -9,6 +9,8 @@ exports.register = async (req, res, next) => {
     const { username, password, email } = req.body;
 
     // validations
+
+    await registerSchema.validate({ ...req.body }, { abortEarly: false });
 
     const isUserExist = await User.isUserExist({ email, username });
 
