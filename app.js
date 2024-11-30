@@ -2,11 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const cookie = require("express");
 const flash = require("express-flash");
+const session = require("express-session");
 const path = require("path");
 const { errorHandler } = require("./middlewares/errorHandler");
 const { setHeaders } = require("./middlewares/headers");
-
-
 
 const app = express();
 
@@ -15,16 +14,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: "Secret key",
+    saveUninitialized: false,
+    resave: false,
+  })
+);
 app.use(cookie());
 app.use(flash());
+
+app.set("view engine" , "ejs");
+app.set("views" , path.join(__dirname , "views"))
 
 //* Cors Policy
 app.use(setHeaders);
 
 //* Static Folders
 app.use(express.static(path.join(__dirname, "public")));
-
-
 
 app.use((req, res) => {
   console.log("this path is not found:", req.path);
