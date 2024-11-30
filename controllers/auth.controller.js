@@ -22,9 +22,7 @@ exports.register = async (req, res, next) => {
 
     if (isUserExist) {
       req.flash("error", "This user is exist already :(");
-      return res.status(422).json({
-        message: "This user with this email or password is exist in db",
-      });
+      return res.redirect("back");
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -59,11 +57,7 @@ exports.register = async (req, res, next) => {
 
     req.flash("success", "User Register successfully :)");
 
-    return res.status(201).json({
-      message: "User register successfully :)",
-      accessToken,
-      refreshToken,
-    });
+    return res.redirect("/");
   } catch (error) {
     next(error);
   }
@@ -79,18 +73,14 @@ exports.login = async (req, res, next) => {
 
     if (!user) {
       req.flash("error", "username or password is in correct");
-      return res
-        .status(422)
-        .json({ message: "username or password is invalid" });
+      return res.redirect("back");
     }
 
     const isValidPassword = await bcrypt.compare(password, user.password);
 
     if (!isValidPassword) {
       req.flash("error", "username or password is in correct");
-      return res
-        .status(422)
-        .json({ message: "username or password is invalid " });
+      return res.redirect("back");
     }
 
     const accessToken = jwt.sign(
@@ -121,11 +111,7 @@ exports.login = async (req, res, next) => {
 
     req.flash("success", "User login successfully :)");
 
-    return res.json({
-      message: "User login successfully :)",
-      accessToken,
-      refreshToken,
-    });
+    return res.redirect("/");
   } catch (error) {
     next(error);
   }

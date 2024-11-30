@@ -8,7 +8,7 @@
   </head>
   <body>
     <section class="container">
-      <form action="#" class="form">
+      <form action="/auth/login" method="post" class="form">
         <div class="left-side image-bg"></div>
         <div class="form-content">
           <header>
@@ -20,11 +20,7 @@
 
             <div class="login-methods">
               <div>
-                <img
-                  src="/images/google.png"
-                  alt=""
-                  class="login-logo"
-                />
+                <img src="/images/google.png" alt="" class="login-logo" />
                 ورود با جیمیل
               </div>
               <div>
@@ -37,25 +33,31 @@
             <p class="or">یا وارد شوید با :</p>
 
             <div class="inputs-container">
-                <input class="form-input" type="text" placeholder="نام کاربری ...">
-                <input class="form-input" type="password" placeholder="گذرواژه ...">
+              <input
+                class="form-input"
+                name="username"
+                type="text"
+                placeholder="نام کاربری ..."
+              />
+              <input
+                class="form-input"
+                name="password"
+                type="password"
+                placeholder="گذرواژه ..."
+              />
             </div>
             <div>
-                <div class="remember-me">
-                    <input type="checkbox" name="remember-me" id="remember-me">
-                    <label for="remember-me">مرا به خاطر بسپار</label>
-                </div>
+              <div class="remember-me">
+                <input type="checkbox" name="remember-me" id="remember-me" />
+                <label for="remember-me">مرا به خاطر بسپار</label>
+              </div>
             </div>
           </main>
           <footer class="form-footer">
-            <button class="login-button">
-                وارد شوید
-            </button>
-          
+            <button type="submit" class="login-button">وارد شوید</button>
           </footer>
         </div>
       </form>
     </section>
-
   </body>
 </html>
