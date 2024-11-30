@@ -143,3 +143,9 @@ html {
 .login-button:hover {
   background: rgba(2, 172, 202, 0.829);
 }
+
+.swal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

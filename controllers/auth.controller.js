@@ -111,7 +111,7 @@ exports.login = async (req, res, next) => {
 
     req.flash("success", "User login successfully :)");
 
-    return res.redirect("/");
+    return res.redirect("back");
   } catch (error) {
     next(error);
   }
