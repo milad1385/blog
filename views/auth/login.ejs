@@ -66,13 +66,13 @@
         swal({
           title: "<%= locals.messages.error%>",
           icon: "error",
-          buttons: "Try Again",
+          buttons: "تلاش مجدد",
         });
       } else if ("<%= locals.messages.success%>") {
         swal({
           title: "<%= locals.messages.success%>",
           icon: "success",
-          buttons: "Ok",
+          buttons: "اوکی",
         }).then(() => {
           location.href = "/";
         });

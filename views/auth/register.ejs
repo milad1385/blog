@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>وارد شوید - سبزبلاگ</title>
+    <link rel="stylesheet" href="/css/login.css" />
+    <!-- <link rel="stylesheet" href="./input.css"> -->
+  </head>
+  <body>
+    <section class="container">
+      <form action="/auth/register" method="post" class="form register-form">
+        <div class="left-side image-bg"></div>
+        <div class="form-content">
+          <header>
+            <p class="welcome">خوش آمدید !</p>
+            <div class="go-register-text">
+              <p>حساب کاربری دارید؟</p>
+              <a href="../login/">وارد شوید!</a>
+            </div>
+
+            <div class="login-methods">
+              <div>
+                <img src="/images/google.png" alt="" class="login-logo" />
+                ورود با جیمیل
+              </div>
+              <div>
+                <img src="/images/meta.png" alt="" class="login-logo" />
+                ورود با متا
+              </div>
+            </div>
+          </header>
+          <main class="form-main">
+            <p class="or">یا وارد شوید با :</p>
+
+            <div class="inputs-container">
+              <input
+                class="form-input fullName"
+                name="name"
+                type="text"
+                placeholder="نام و نام خانوادگی ..."
+              />
+              <input
+                class="form-input username"
+                type="text"
+                name="username"
+                placeholder="نام کاربری ..."
+              />
+              <input
+                class="form-input email"
+                type="email"
+                name="email"
+                placeholder="آدرس ایمیل ..."
+              />
+              <input
+                class="form-input password"
+                type="password"
+                name="password"
+                placeholder="گذرواژه ..."
+              />
+            </div>
+            <div>
+              <div class="remember-me">
+                <input type="checkbox" name="remember-me" id="remember-me" />
+                <label for="remember-me">مرا به خاطر بسپار</label>
+              </div>
+            </div>
+          </main>
+          <footer class="form-footer">
+            <button type="submit" class="login-button">ثبت نام</button>
+          </footer>
+        </div>
+      </form>
+    </section>
+    <script src="/js/sweetalert.js"></script>
+    <script>
+      if ("<%= locals.messages.error%>") {
+        swal({
+          title: "<%= locals.messages.error%>",
+          icon: "error",
+          buttons: "تلاش مجدد",
+        });
+      } else if ("<%= locals.messages.success%>") {
+        swal({
+          title: "<%= locals.messages.success%>",
+          icon: "success",
+          buttons: "اوکی",
+        }).then(() => {
+          location.href = "/";
+        });
+      }
+    </script>
+  </body>
+</html>

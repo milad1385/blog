@@ -12,6 +12,14 @@ exports.showLoginView = (req, res, next) => {
   }
 };
 
+exports.showRegisterView = (req, res, next) => {
+  try {
+    return res.render("auth/register");
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.register = async (req, res, next) => {
   try {
     const { username, password, email } = req.body;
@@ -21,7 +29,7 @@ exports.register = async (req, res, next) => {
     const isUserExist = await User.isUserExist({ email, username });
 
     if (isUserExist) {
-      req.flash("error", "This user is exist already :(");
+      req.flash("error", "کاربری با این اطلاعات وجود دارد");
       return res.redirect("back");
     }
 
@@ -55,9 +63,9 @@ exports.register = async (req, res, next) => {
       maxAge: 60_000,
     });
 
-    req.flash("success", "User Register successfully :)");
+    req.flash("success", "کاربر با موفقیت ثبت نام شد");
 
-    return res.redirect("/");
+    return res.redirect("back");
   } catch (error) {
     next(error);
   }
