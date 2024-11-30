@@ -8,8 +8,6 @@ exports.register = async (req, res, next) => {
   try {
     const { username, password, email } = req.body;
 
-    // validations
-
     await registerSchema.validate({ ...req.body }, { abortEarly: false });
 
     const isUserExist = await User.isUserExist({ email, username });

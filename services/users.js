@@ -58,3 +58,12 @@ exports.isUserExist = async ({ email, username }) => {
     return error;
   }
 };
+
+exports.delete = async (userId) => {
+  try {
+    const query = "DELETE FROM users WHERE id = ?";
+    await db.execute(query, [userId]);
+  } catch (error) {
+    return error;
+  }
+};
