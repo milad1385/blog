@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پنل مدیریت</title>
+    <link rel="stylesheet" href="/css/p-admin/tags.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <header>
+        <a href="/">
+          <img
+            src="/images/logo.png"
+            alt="Website logo"
+            class="website-logo"
+          />
+        </a>
+      </header>
+      <main class="sidebar-content">
+        <div>
+          <a href="./" class="side-link">
+            <i class="fa-solid fa-house"></i>
+            صفحه اصلی
+          </a>
+        </div>
+        <div>
+          <a href="./create/" class="side-link">
+            <i class="fa-solid fa-square-plus"></i>
+            ایجاد مقاله
+          </a>
+        </div>
+        <div>
+          <a href="#" class="side-link">
+            <i class="fa-solid fa-users"></i>
+            لیست کاربران
+          </a>
+        </div>
+        <div>
+          <a href="#" class="side-link">
+            <i class="fa-solid fa-wallet"></i> مدیریت فروش
+          </a>
+        </div>
+        <div>
+          <a href="#" class="side-link">
+            <i class="fa-solid fa-shop"></i> محصولات
+          </a>
+        </div>
+        <div>
+          <a href="#" class="side-link">
+            <i class="fa-solid fa-list"></i>
+            دسته بندی ها
+          </a>
+        </div>
+      </main>
+    </aside>
+
+    <!-- Main content  -->
+    <main id="content">
+      <!-- Navbar - profile -->
+      <nav>
+        <div>
+          <div>
+            <p class="welcome">پیمان عزیز, خوش آمدید 🙌</p>
+            <p class="text-sm">روز خوشی رو داشته باشید !</p>
+          </div>
+        </div>
+        <div class="navbar-buttons">
+          <button class="bell-button">
+            <i class="fa-solid fa-bell"></i>
+          </button>
+          <div class="break-line"></div>
+          <div class="profile-dropdown">
+            <div class="profile-data">
+              <img
+                src="/images/admin.jpg"
+                alt="Admin profile"
+                class="admin-profile"
+              />
+              <div>
+                <p class="user-name">پیمان احمدی</p>
+                <p class="user-role">مدیر</p>
+              </div>
+              <div>
+                <span>
+                  <i class="fa-solid fa-chevron-left"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Content  -->
+      <section id="container">
+        <!-- Sort & Filtering -->
+        <header>
+          <div>
+            <h3 class="page-title">لیست مقالات</h3>
+            <p class="text-sm">پنل پیشرفته مدیریت - مقالات</p>
+          </div>
+          <!-- Filter Options -->
+          <div class="filtering">
+            <div>
+              <input
+                type="search"
+                class="search-bar"
+                placeholder="جستجو کنید .."
+              />
+            </div>
+            <div class="flex-center">
+              <button id="create-article">
+                <span>
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+                <span> ایجاد مقاله </span>
+              </button>
+            </div>
+            <div class="flex-center">
+              <button class="sort-button mr-10">
+                <span> بر اساس </span>
+                <span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </span>
+              </button>
+            </div>
+            <div class="flex-center">
+              <button class="sort-button mr-10">
+                <span><i class="fa-solid fa-filter"></i></span>
+                <span> جستجوی پیشرفته </span>
+                <span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Table container -->
+        <main>
+          <!-- Table -->
+          <div class="table">
+            <div class="table-head">
+              <div class="th-item">
+                <p>#شناسه</p>
+              </div>
+              <div class="th-item w-2/5">
+                <p>عنوان</p>
+              </div>
+              <div class="th-item">
+                <p>توسط</p>
+              </div>
+              <div class="th-item">
+                <p>مدیریت</p>
+              </div>
+            </div>
+            <div class="table-main">
+              <div class="table-row">
+                <p>952900</p>
+                <p>چگونه انسان شاد تری باشیم؟</p>
+                <p>امین سعیدی راد</p>
+                <div class="manage-buttons">
+                  <button class="manage-button remove">حذف</button>
+                  <button class="manage-button edit">ویرایش</button>
+                  <button class="manage-button view">مشاهده</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-footer"></div>
+          </div>
+        </main>
+      </section>
+    </main>
+
+    <div class="modal-screen invisible">
+      <div class="modal-card"></div>
+    </div>
+  </body>
+</html>
+
+<div class="dc-btnarea toolip-wrapo dc-print-options">
+  <a
+    href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=ss&dates=20240717T085000/20240717T085500&location=%DA%A9%D9%84%DB%8C%D9%86%DB%8C%DA%A9+%D8%AF%DA%A9%D8%AA%D8%B1+%D9%85%D8%AC%DB%8C%D8%AF+%D8%BA%D9%86%DA%86%D9%87+%D8%A7%DB%8C&sprop=&sprop=name:"
+    target="_blank"
+    ><i class="ti-google"></i
+  ></a>
+
+  <a
+    href="https://calendar.yahoo.com/?v=60&view=d&type=20&title=ss&st=20240717T085000Z&dur=0005&in_loc=%DA%A9%D9%84%DB%8C%D9%86%DB%8C%DA%A9+%D8%AF%DA%A9%D8%AA%D8%B1+%D9%85%D8%AC%DB%8C%D8%AF+%D8%BA%D9%86%DA%86%D9%87+%D8%A7%DB%8C"
+    target="_blank"
+    ><i class="ti-yahoo"></i
+  ></a>
+
+  <a
+    href="https://mamak-paziresh.ir/dashboard/?ref=prescription&mode=view&identity=194&booking_id=9313"
+    data-tipso="ایجاد نسخه"
+    class="dc-btn dc-filebtn dc-tipso generate-prescription tipso_style"
+    ><i class="ti-files"></i
+  ></a>
+
+  <a
+    href="javascript:void(0)"
+    data-toggle="modal"
+    data-tipso="ارسال پیام"
+    data-target="#send_message"
+    class="dc-btn dc-send-message dc-msgbtn dc-tipso tipso_style"
+    ><i class="ti-email"></i
+  ></a>
+
+  <form method="post" name="download_pdf" class="view-prescription">
+    <input type="hidden" name="pdf_booking_id" value="9313" />
+
+    <a
+      href="javascript:void(0)"
+      data-tipso="دانلود نسخه"
+      onclick="document.forms['download_pdf'].submit(); return false;"
+      class="dc-btn dc-pdfbtn dc-tipso tipso_style"
+      ><i class="ti-download"></i
+    ></a>
+  </form>
+</div>
