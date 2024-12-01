@@ -54,13 +54,13 @@ exports.register = async (req, res, next) => {
     res.cookie("access-token", accessToken, {
       path: "/",
       httpOnly: true,
-      maxAge: 60_000,
+      maxAge: 60_000_000_000,
     });
 
     res.cookie("refresh-token", hashedRefreshToken, {
       path: "/",
       httpOnly: true,
-      maxAge: 60_000,
+      maxAge: 60_000_000_000,
     });
 
     req.flash("success", "کاربر با موفقیت ثبت نام شد");
@@ -80,14 +80,14 @@ exports.login = async (req, res, next) => {
     const user = await User.getUserByUsername(username);
 
     if (!user) {
-      req.flash("error", "username or password is in correct");
+      req.flash("error", "نام کاربری یا رمز عبور اشتباه است");
       return res.redirect("back");
     }
 
     const isValidPassword = await bcrypt.compare(password, user.password);
 
     if (!isValidPassword) {
-      req.flash("error", "username or password is in correct");
+      req.flash("error", "نام کاربری یا رمز عبور اشتباه است");
       return res.redirect("back");
     }
 
@@ -117,7 +117,7 @@ exports.login = async (req, res, next) => {
       maxAge: 60_000,
     });
 
-    req.flash("success", "User login successfully :)");
+    req.flash("success", "کاربر با موفقیت وارد شد");
 
     return res.redirect("back");
   } catch (error) {
