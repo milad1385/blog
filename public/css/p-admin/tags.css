@@ -1,4 +1,4 @@
-@import url(/public/css/fonts.css);
+@import url(/css/fonts.css);
 
 * {
   padding: 0;
@@ -385,4 +385,10 @@ nav {
   align-items: center;
   gap: 8px;
   font-family: "IranSans-Medium";
+}
+
+.swal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

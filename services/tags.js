@@ -30,7 +30,7 @@ exports.findById = async (id) => {
 
 exports.findAll = async () => {
   try {
-    const query = "SELECT * FROM tags";
+    const query = "SELECT * FROM tags ORDER BY id DESC";
 
     const [tags] = await db.execute(query);
 

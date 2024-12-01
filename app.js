@@ -10,6 +10,7 @@ const { setHeaders } = require("./middlewares/headers");
 const authRouter = require("./routes/auth.routes");
 const homeRouter = require("./routes/home.routes");
 const adminRoutes = require("./routes/admin.routes");
+const tagRouter = require("./routes/tags.routes");
 
 const app = express();
 
@@ -39,7 +40,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", homeRouter);
 app.use("/auth", authRouter);
-app.use("/admin", adminRoutes);
+app.use("/tags", tagRouter);
+app.use("/p-admin", adminRoutes);
 
 app.use((req, res) => {
   console.log("this path is not found:", req.path);

@@ -18,11 +18,7 @@
     <aside class="sidebar">
       <header>
         <a href="/">
-          <img
-            src="/images/logo.png"
-            alt="Website logo"
-            class="website-logo"
-          />
+          <img src="/images/logo.png" alt="Website logo" class="website-logo" />
         </a>
       </header>
       <main class="sidebar-content">
@@ -104,7 +100,7 @@
         <!-- Sort & Filtering -->
         <header>
           <div>
-            <h3 class="page-title">لیست مقالات</h3>
+            <h3 class="page-title">لیست تگ ها</h3>
             <p class="text-sm">پنل پیشرفته مدیریت - مقالات</p>
           </div>
           <!-- Filter Options -->
@@ -115,31 +111,6 @@
                 class="search-bar"
                 placeholder="جستجو کنید .."
               />
-            </div>
-            <div class="flex-center">
-              <button id="create-article">
-                <span>
-                  <i class="fa-solid fa-plus"></i>
-                </span>
-                <span> ایجاد مقاله </span>
-              </button>
-            </div>
-            <div class="flex-center">
-              <button class="sort-button mr-10">
-                <span> بر اساس </span>
-                <span>
-                  <i class="fa-solid fa-chevron-down"></i>
-                </span>
-              </button>
-            </div>
-            <div class="flex-center">
-              <button class="sort-button mr-10">
-                <span><i class="fa-solid fa-filter"></i></span>
-                <span> جستجوی پیشرفته </span>
-                <span>
-                  <i class="fa-solid fa-chevron-down"></i>
-                </span>
-              </button>
             </div>
           </div>
         </header>
@@ -156,23 +127,31 @@
                 <p>عنوان</p>
               </div>
               <div class="th-item">
-                <p>توسط</p>
+                <p>ایجاد شده</p>
               </div>
               <div class="th-item">
                 <p>مدیریت</p>
               </div>
             </div>
             <div class="table-main">
+              <% if(tags.length){ %> <% tags.forEach(tag => {%>
               <div class="table-row">
-                <p>952900</p>
-                <p>چگونه انسان شاد تری باشیم؟</p>
-                <p>امین سعیدی راد</p>
+                <p><%= tag.id%></p>
+                <p><%= tag.title%></p>
+                <p><%= new Date(tag.created_at).toLocaleString("fa-IR")%></p>
                 <div class="manage-buttons">
-                  <button class="manage-button remove">حذف</button>
-                  <button class="manage-button edit">ویرایش</button>
-                  <button class="manage-button view">مشاهده</button>
+                  <form action="/tags/remove/<%= tag.id%>" method="post">
+                    <button type="submit" class="manage-button remove">
+                      حذف
+                    </button>
+                  </form>
+                  <form action="" method="post">
+                    <button class="manage-button edit">ویرایش</button>
+                  </form>
                 </div>
               </div>
+
+              <%})%> <%}%>
             </div>
             <div class="table-footer"></div>
           </div>
@@ -183,47 +162,22 @@
     <div class="modal-screen invisible">
       <div class="modal-card"></div>
     </div>
+
+    <script src="/js/sweetalert.js"></script>
+    <script>
+      if ("<%= locals.messages.error%>") {
+        swal({
+          title: "<%= locals.messages.error%>",
+          icon: "error",
+          buttons: "تلاش مجدد",
+        });
+      } else if ("<%= locals.messages.success%>") {
+        swal({
+          title: "<%= locals.messages.success%>",
+          icon: "success",
+          buttons: "اوکی",
+        });
+      }
+    </script>
   </body>
 </html>
-
-<div class="dc-btnarea toolip-wrapo dc-print-options">
-  <a
-    href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=ss&dates=20240717T085000/20240717T085500&location=%DA%A9%D9%84%DB%8C%D9%86%DB%8C%DA%A9+%D8%AF%DA%A9%D8%AA%D8%B1+%D9%85%D8%AC%DB%8C%D8%AF+%D8%BA%D9%86%DA%86%D9%87+%D8%A7%DB%8C&sprop=&sprop=name:"
-    target="_blank"
-    ><i class="ti-google"></i
-  ></a>
-
-  <a
-    href="https://calendar.yahoo.com/?v=60&view=d&type=20&title=ss&st=20240717T085000Z&dur=0005&in_loc=%DA%A9%D9%84%DB%8C%D9%86%DB%8C%DA%A9+%D8%AF%DA%A9%D8%AA%D8%B1+%D9%85%D8%AC%DB%8C%D8%AF+%D8%BA%D9%86%DA%86%D9%87+%D8%A7%DB%8C"
-    target="_blank"
-    ><i class="ti-yahoo"></i
-  ></a>
-
-  <a
-    href="https://mamak-paziresh.ir/dashboard/?ref=prescription&mode=view&identity=194&booking_id=9313"
-    data-tipso="ایجاد نسخه"
-    class="dc-btn dc-filebtn dc-tipso generate-prescription tipso_style"
-    ><i class="ti-files"></i
-  ></a>
-
-  <a
-    href="javascript:void(0)"
-    data-toggle="modal"
-    data-tipso="ارسال پیام"
-    data-target="#send_message"
-    class="dc-btn dc-send-message dc-msgbtn dc-tipso tipso_style"
-    ><i class="ti-email"></i
-  ></a>
-
-  <form method="post" name="download_pdf" class="view-prescription">
-    <input type="hidden" name="pdf_booking_id" value="9313" />
-
-    <a
-      href="javascript:void(0)"
-      data-tipso="دانلود نسخه"
-      onclick="document.forms['download_pdf'].submit(); return false;"
-      class="dc-btn dc-pdfbtn dc-tipso tipso_style"
-      ><i class="ti-download"></i
-    ></a>
-  </form>
-</div>
