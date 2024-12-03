@@ -3,7 +3,7 @@ const fs = require("fs");
 const multer = require("multer");
 exports.multerStorage = (destination, allowedType = /jpg|png|jpeg|webp/) => {
   if (!fs.existsSync(destination)) {
-    fs.mkdirSync(destination, { recursive: true });
+    fs.mkdirSync(destination, { recursive: false });
   }
 
   const storage = multer.diskStorage({

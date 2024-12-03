@@ -3,7 +3,7 @@ const { articleSchema } = require("../validators/article.validator");
 
 exports.create = async (req, res, next) => {
   try {
-    const { title, slug, content } = req.body;
+    const { title, slug, content, tags } = req.body;
 
     await articleSchema.validate({ ...req.body }, { abortEarly: false });
 
@@ -11,6 +11,8 @@ exports.create = async (req, res, next) => {
       req.flash("error", "آپلود کاور مقاله الزامی است");
       return res.redirect("back");
     }
+
+    console.log(req.body);
 
     const article = await Article.create({
       title,
@@ -25,7 +27,9 @@ exports.create = async (req, res, next) => {
     req.flash("success", "مقاله با موفقیت ساخته شد");
     return res.redirect("back");
   } catch (error) {
-    next(error);
+    console.log(error);
+    
+    // next(error);
   }
 };
 

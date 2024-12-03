@@ -3,7 +3,7 @@ const db = require("../configs/db");
 exports.create = async ({ title, content, slug, cover, author_id }) => {
   try {
     const insertQuery =
-      "INSERT INTO articles  VALUES (NULL , ? , ? , ? , ? , ?)";
+      "INSERT INTO articles (id , title , content , cover , slug , author_id)  VALUES (NULL , ? , ? , ? , ? , ?)";
 
     const [insertedArticle] = await db.execute(insertQuery, [
       title,
@@ -20,6 +20,8 @@ exports.create = async ({ title, content, slug, cover, author_id }) => {
 
     return mainArticle[0];
   } catch (error) {
+    console.log("create => ", error);
+
     next(error);
   }
 };
