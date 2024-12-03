@@ -1,5 +1,6 @@
 const db = require("../configs/db");
 
+
 exports.create = async ({ title, content, slug, cover, author_id }) => {
   try {
     const insertQuery =
@@ -47,6 +48,26 @@ exports.addTag = async (articleId, tagId) => {
     await db.execute(query, [articleId, tagId]);
 
     return true;
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getArticlesFromTag = async (tagId) => {
+  try {
+    const query = `SELECT articles.id,articles.title , articles.content , articles.cover , articles.slug , users.username AS author , tags.title AS tag
+    FROM articles_tags
+    INNER JOIN articles
+    ON articles.id = articles_tags.article_id
+    INNER JOIN users
+    ON users.id = articles.author_id
+    INNER JOIN tags
+    ON tags.id = articles_tags.tag_id
+    WHERE articles_tags.tag_id = ?`;
+
+    const [articles] = await db.execute(query, [tagId]);
+
+    return articles;
   } catch (error) {
     next(error);
   }

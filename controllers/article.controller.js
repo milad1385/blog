@@ -1,4 +1,5 @@
 const Article = require("../services/articles");
+const Tag = require("../services/tags");
 
 const { articleSchema } = require("../validators/article.validator");
 
@@ -41,6 +42,25 @@ exports.delete = async (req, res, next) => {
 
 exports.getAll = async (req, res, next) => {
   try {
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getRelativeArticles = async (req, res, next) => {
+  try {
+    const { tagTitle } = req.params;
+
+    if (!tagTitle) {
+      req.flash("error", "Please send tag title");
+      return res.redirect("back");
+    }
+
+    const tag = await Tag.findByTitle(tagTitle);
+
+    const articles = await Article.getArticlesFromTag(tag.id);
+
+    return res.render("", { articles });
   } catch (error) {
     next(error);
   }
