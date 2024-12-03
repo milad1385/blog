@@ -36,3 +36,11 @@ exports.delete = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getRelativeTagArticle = async (req, res, next) => {
+  try {
+  } catch (error) {
+    next(error);
+  }
+};
+

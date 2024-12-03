@@ -7,10 +7,11 @@ const path = require("path");
 const { errorHandler } = require("./middlewares/errorHandler");
 const { setHeaders } = require("./middlewares/headers");
 
-const authRouter = require("./routes/auth.routes");
-const homeRouter = require("./routes/home.routes");
+const authRoutes = require("./routes/auth.routes");
+const homeRoutes = require("./routes/home.routes");
 const adminRoutes = require("./routes/admin.routes");
-const tagRouter = require("./routes/tags.routes");
+const tagRoutes = require("./routes/tags.routes");
+const articleRoutes = require("./routes/article.routes");
 
 const app = express();
 
@@ -38,10 +39,11 @@ app.use(setHeaders);
 //* Static Folders
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", homeRouter);
-app.use("/auth", authRouter);
-app.use("/tags", tagRouter);
+app.use("/", homeRoutes);
+app.use("/auth", authRoutes);
+app.use("/tags", tagRoutes);
 app.use("/p-admin", adminRoutes);
+app.use("/article", articleRoutes);
 
 app.use((req, res) => {
   console.log("this path is not found:", req.path);
