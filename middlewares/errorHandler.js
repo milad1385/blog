@@ -16,8 +16,9 @@ exports.errorHandler = (err, req, res, next) => {
       });
     });
 
-    console.log({ success: false, error: "Validation error", data: errors });
-    return errorResponse(res, 400, "Validation error", errors);
+    req.flash("error", errors[0].message);
+
+    return res.redirect("back");
   }
 
   let errors;
