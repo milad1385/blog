@@ -1,13 +1,14 @@
 const db = require("../configs/db");
 
-exports.create = async ({ title, content, slug, author_id }) => {
+exports.create = async ({ title, content, slug, cover, author_id }) => {
   try {
     const insertQuery =
-      "INSERT INTO articles (id , title , content , slug , author_id) VALUES (NULL , ? , ? , ? , ?)";
+      "INSERT INTO articles  VALUES (NULL , ? , ? , ? , ? , ?)";
 
     const [insertedArticle] = await db.execute(insertQuery, [
       title,
       content,
+      cover,
       slug,
       author_id,
     ]);

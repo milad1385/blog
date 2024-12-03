@@ -63,3 +63,15 @@ exports.delete = async (id) => {
     next(error);
   }
 };
+
+exports.findByIdAndUpdate = async (title, id) => {
+  try {
+    const query = "UPDATE tags SET title = ? WHERE id = ?";
+
+    await db.execute(query, [title, id]);
+
+    return true;
+  } catch (error) {
+    next(error);
+  }
+};
