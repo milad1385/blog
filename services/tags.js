@@ -28,6 +28,18 @@ exports.findById = async (id) => {
   }
 };
 
+exports.findByTitle = async (title) => {
+  try {
+    const query = "SELECT * FROM tags WHERE title = ?";
+
+    const [tag] = await db.execute(query, [title]);
+
+    return tag[0];
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.findAll = async () => {
   try {
     const query = "SELECT * FROM tags ORDER BY id DESC";

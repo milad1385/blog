@@ -38,3 +38,15 @@ exports.getAll = async () => {
     next(error);
   }
 };
+
+exports.addTag = async (articleId, tagId) => {
+  try {
+    const query = "INSERT INTO articles_tags VALUES (NULL , ? , ?)";
+
+    await db.execute(query, [articleId, tagId]);
+
+    return true;
+  } catch (error) {
+    next(error);
+  }
+};

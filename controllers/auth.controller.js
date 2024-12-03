@@ -108,13 +108,13 @@ exports.login = async (req, res, next) => {
     res.cookie("access-token", accessToken, {
       path: "/",
       httpOnly: true,
-      maxAge: 60_000,
+      maxAge: 60_000_000_000,
     });
 
     res.cookie("refresh-token", hashedRefreshToken, {
       path: "/",
       httpOnly: true,
-      maxAge: 60_000,
+      maxAge: 60_000_000_000,
     });
 
     req.flash("success", "کاربر با موفقیت وارد شد");

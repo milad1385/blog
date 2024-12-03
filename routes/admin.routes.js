@@ -1,5 +1,5 @@
 const express = require("express");
-const controller = require("./../controllers/p-admin/tags.controller");
+const controller = require("../controllers/p-admin/p-admin.controller");
 const authGuard = require("../middlewares/authGuard");
 const router = express.Router();
 
