@@ -28,9 +28,7 @@ exports.create = async (req, res, next) => {
     req.flash("success", "مقاله با موفقیت ساخته شد");
     return res.redirect("back");
   } catch (error) {
-    console.log(error);
-
-    // next(error);
+    next(error);
   }
 };
 
