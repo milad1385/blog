@@ -13,8 +13,10 @@ exports.showTagsView = async (req, res, next) => {
 
 exports.showArticleView = async (req, res, next) => {
   try {
+    const tags = await Tag.findAll();
+
     const user = req.user;
-    return res.render("p-admin/createArticle", { user });
+    return res.render("p-admin/createArticle", { user, tags });
   } catch (error) {
     next(error);
   }

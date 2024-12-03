@@ -110,32 +110,43 @@
 
         <!-- Table container -->
         <main>
-          <div class="inputs-wrapper">
-            <input
-              type="text"
-              class="input-element title"
-              placeholder=" عنوان مقاله را وارد نمائید ..."
-            />
-            <input
-              type="text"
-              class="input-element author"
-              placeholder="نام درج کننده مقاله را وارد نمائید ..."
-            />
-            <label class="input-element file-upload">
-              <div class="label">لطفا یک فایل را انتخاب نمائید ...</div>
-              <input type="file" name="cover" id="cover" />
-            </label>
-          </div>
-          <textarea
-            name=""
-            class="textarea description"
-            id=""
-            placeholder="لطفا توضیحات مقاله را وارد نمائید ..."
-          ></textarea>
-          <div class="buttons-wrapper">
-            <a class="cancel" href="../">انصراف</a>
-            <button class="submit">ایجاد مقاله</button>
-          </div>
+          <form action="/article" method="post" enctype="multipart/form-data">
+            <div class="inputs-wrapper">
+              <input
+                type="text"
+                name="title"
+                class="input-element title"
+                placeholder=" عنوان مقاله را وارد نمائید ..."
+              />
+              <input
+                type="text"
+                name="slug"
+                class="input-element author"
+                placeholder="نام اسلاگ را وارد کنید ... "
+              />
+              <label class="input-element file-upload">
+                <div class="label">لطفا یک فایل را انتخاب نمائید ...</div>
+                <input type="file" name="cover" id="cover" />
+              </label>
+
+              <select class="input-element" name="tag" multiple>
+                <option value="-1">تگ مورد نظر خود را انتخاب کنید</option>
+                <% tags.forEach(tag => {%>
+                  <option value="<%= tag.id%>"><%= tag.title%></option>
+                <%})%>
+              </select>
+            </div>
+            <textarea
+              name="content"
+              class="textarea description"
+              id="text-content"
+              placeholder="لطفا توضیحات مقاله را وارد نمائید ..."
+            ></textarea>
+            <div class="buttons-wrapper">
+              <a class="cancel" href="../">انصراف</a>
+              <button class="submit">ایجاد مقاله</button>
+            </div>
+          </form>
         </main>
       </section>
     </main>
@@ -143,7 +154,15 @@
     <div class="modal-screen invisible">
       <div class="modal-card"></div>
     </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.15.1/ckeditor.js"
+      integrity="sha512-aThGT4RJc95+zt2vrs8iMjrFpsJxcFclp7tweVls6/3cNo3GWvGvtLV576o8Kdvdf3fJhrrG3wkmoea/KJMLFQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-    <script src="./index.js"></script>
+    <script>
+      CKEDITOR.replace("text-content");
+    </script>
   </body>
 </html>
