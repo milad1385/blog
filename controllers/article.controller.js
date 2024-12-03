@@ -35,6 +35,18 @@ exports.create = async (req, res, next) => {
 
 exports.delete = async (req, res, next) => {
   try {
+    const { id } = req.params;
+
+    if (!id) {
+      req.flash("error", "لطفا ایدی تگ را ارسال کنید");
+      return res.redirect("back");
+    }
+
+    await Article.findByIdAndDelete(id);
+
+    req.flash("success", "مقاله با موفقیت حذف شد");
+
+    return res.redirect("back");
   } catch (error) {
     next(error);
   }
@@ -52,7 +64,7 @@ exports.getRelativeArticles = async (req, res, next) => {
     const { tagTitle } = req.params;
 
     if (!tagTitle) {
-      req.flash("error", "Please send tag title");
+      req.flash("error", "لطفا نام تگ را انتخاب کنید");
       return res.redirect("back");
     }
 
