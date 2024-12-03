@@ -1,4 +1,5 @@
 const Article = require("../services/articles");
+
 const { articleSchema } = require("../validators/article.validator");
 
 exports.create = async (req, res, next) => {
@@ -12,8 +13,6 @@ exports.create = async (req, res, next) => {
       return res.redirect("back");
     }
 
-    console.log(req.body);
-
     const article = await Article.create({
       title,
       slug,
@@ -22,13 +21,15 @@ exports.create = async (req, res, next) => {
       cover: req.file.filename,
     });
 
-    console.log(article);
+    tags.forEach(async (tag) => {
+      await Article.addTag(article.id, tag);
+    });
 
     req.flash("success", "مقاله با موفقیت ساخته شد");
     return res.redirect("back");
   } catch (error) {
     console.log(error);
-    
+
     // next(error);
   }
 };

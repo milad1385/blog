@@ -13,15 +13,13 @@ exports.create = async ({ title, content, slug, cover, author_id }) => {
       author_id,
     ]);
 
-    const mainArticle = await db.execute(
+    const [mainArticle] = await db.execute(
       "SELECT * FROM articles WHERE id = ?",
       [insertedArticle.insertId]
     );
 
     return mainArticle[0];
   } catch (error) {
-    console.log("create => ", error);
-
     next(error);
   }
 };
