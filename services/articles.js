@@ -22,3 +22,13 @@ exports.create = async ({ title, content, slug, author_id }) => {
     next(error);
   }
 };
+
+exports.findByIdAndDelete = async (id) => {
+  try {
+    const query = "DELETE FROM articles WHERE id = ?";
+    await db.execute(query, [id]);
+    return true;
+  } catch (error) {
+    next(error);
+  }
+};
