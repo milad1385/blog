@@ -32,3 +32,9 @@ exports.findByIdAndDelete = async (id) => {
     next(error);
   }
 };
+exports.getAll = async () => {
+  try {
+  } catch (error) {
+    next(error);
+  }
+};

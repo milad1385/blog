@@ -1,0 +1,78 @@
+main {
+  margin-top: 20px;
+}
+
+.inputs-wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 100%;
+  gap: 12px;
+}
+
+.input-element {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  height: 42px;
+  border-radius: 4px;
+  padding: 0 12px;
+}
+
+label.input-element {
+  width: 100%;
+  cursor: pointer;
+  padding: 0 12px;
+  align-items: center;
+  display: flex;
+  color: gray;
+  position: relative;
+  font-size: 14px;
+}
+
+.textarea {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 4px;
+  resize: none;
+  min-height: 150px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 8px;
+  margin: 12px 0;
+  min-width: 100% !important;
+}
+
+.buttons-wrapper * {
+  padding: 3px 12px;
+  border-radius: 3px;
+  transition: all ease 200ms;
+  position: relative;
+  font-size: 14px;
+  color: white !important;
+}
+
+.cancel {
+  background: rgba(255, 0, 0, 0.856);
+  border: 1px solid rgb(201, 0, 0);
+}
+
+.submit {
+  background: rgb(4, 201, 201);
+  border: 1px solid rgb(0, 146, 151);
+}
+
+#cover[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 10;
+  visibility: 0;
+}
