@@ -222,12 +222,6 @@
         modalContainer.classList.add("invisible");
       });
 
-      modalContainer.addEventListener("click", (e) => {
-        if (e.target.id !== "modal-content") {
-          modalContainer.classList.add("invisible");
-        }
-      });
-
       const showUpdateModal = (title, id) => {
         modalContainer.classList.remove("invisible");
         tagTitleInput.value = title;

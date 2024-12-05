@@ -55,7 +55,24 @@ exports.getRelativeTagArticle = async (req, res, next) => {
     console.log(tag);
 
     const articles = await Article.getArticlesFromTag(tag.id);
-    return res.render("tagArticles.ejs", { articles  , tag});
+    return res.render("tagArticles.ejs", { articles, tag });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.update = async (req, res, next) => {
+  try {
+    const { id, title } = req.body;
+
+    if (!id || !title) {
+      return res.redirect("back");
+    }
+
+    await Tag.findByIdAndUpdate(title, id);
+    req.flash("success", "عنوان تگ با موفقیت آپدیت شد");
+
+    return res.redirect("back");
   } catch (error) {
     next(error);
   }
