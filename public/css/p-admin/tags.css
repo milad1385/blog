@@ -19,7 +19,7 @@ a {
 body {
   background: #f1f1f1;
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: "IranSans-Regular";
 }
 
@@ -246,6 +246,17 @@ nav {
 .invisible {
   opacity: 0;
   visibility: hidden;
+}
+
+.create-tag-btn{
+  background-color: black;
+  color: white;
+  width: 120px;
+  height: 40px;
+
+  border-radius: 10px;
+  display: block;
+  margin-top: 25px;
 }
 
 .cookies-card {

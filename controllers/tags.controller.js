@@ -9,7 +9,7 @@ exports.create = async (req, res, next) => {
       return res.redirect("back");
     }
 
-    const tag = await Tag.create(title);
+    await Tag.create(title);
 
     req.flash("success", "تگ با موفقیت ساخته شد");
 

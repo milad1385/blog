@@ -98,10 +98,32 @@
       <!-- Content  -->
       <section id="container">
         <!-- Sort & Filtering -->
+
+        <header>
+          <div>
+            <h3 class="page-title">ایجاد تگ ها</h3>
+            <p class="text-sm">پنل پیشرفته مدیریت - ایجاد</p>
+          </div>
+
+          <div class="filtering">
+            <form action="/tags" method="post">
+              <input
+                type="text"
+                class="search-bar"
+                id="title"
+                name="title"
+                placeholder="عنوان تگ جدید را وارد کنید ..."
+              />
+
+              <button class="create-tag-btn">ایجاد</button>
+            </form>
+          </div>
+        </header>
+
         <header>
           <div>
             <h3 class="page-title">لیست تگ ها</h3>
-            <p class="text-sm">پنل پیشرفته مدیریت - مقالات</p>
+            <p class="text-sm">پنل پیشرفته مدیریت - لیست</p>
           </div>
           <!-- Filter Options -->
           <div class="filtering">
