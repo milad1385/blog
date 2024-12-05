@@ -7,6 +7,6 @@ router.route("/").post(controller.create);
 
 router.route("/remove/:id").post(authGuard, controller.delete);
 
-router.route("/:slug").post(authGuard, controller.getRelativeTagArticle);
+router.route("/:slug").get(authGuard, controller.getRelativeTagArticle);
 
 module.exports = router;

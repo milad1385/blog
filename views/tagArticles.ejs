@@ -1,0 +1,222 @@
+<!-- Developed in sabzlearn.ir -->
+<!-- Search "tag" for category or your hashtag -->
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سبز بلاگ - مجموعه ای از سبزلرن</title>
+    <link rel="stylesheet" href="/css/tagArticles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Application Header -->
+    <header id="header-component">
+      <!-- Navbar -->
+      <nav class="navbar"></nav>
+    </header>
+
+    <!-- Content -->
+    <main id="content">
+      <aside class="">
+        <div>
+          <a href="/">
+            <img src="/images/logo.png" alt="" class="web-logo" />
+          </a>
+        </div>
+        <div class="links">
+          <a href="#" class="active-link"> <i class="fa-solid fa-house"></i></a>
+          <a href="#"> <i class="fa-solid fa-bell"></i> </a>
+          <a href="#"> <i class="fa-regular fa-bookmark"></i> </a>
+          <a href="#"> <i class="fa-solid fa-receipt"></i> </a>
+          <a href="#"> <i class="fa-regular fa-pen-to-square"></i> </a>
+        </div>
+        <div>
+          <button class="profile-button">
+            <img src="/images/user.png" alt="" />
+          </button>
+        </div>
+      </aside>
+      <section class="content">
+        <div class="container">
+          <div class="new-tweet-button">
+            <div class="plus-icon">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+            <span> عضو خبرنامه سبزبلاگ شوید ! 😍 </span>
+          </div>
+
+          <div class="articles mt-10">
+            <div class="text-lg">
+              <span>مقالات مرتبط با</span>
+              <span class="font-medium text-sky-500" id="tag">#<%= tag.title%></span>
+            </div>
+
+            <% if (articles.length) { %> <% articles.forEach(article => { %>
+            <article class="article">
+              <div class="article-data">
+                <div class="article-author">
+                  <span>
+                    <img src="/images/admin.jpg" class="user-profile" alt="" />
+                  </span>
+                  <span><%= article.author %></span>
+                  <span class="article-release-date">4 روز پیش</span>
+                </div>
+                <div>
+                  <a href="/pages/article/">
+                    <h3><%= article.title %></h3>
+                  </a>
+                  <p class="article-caption">
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه
+                    و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                    تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای
+                    کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
+                    آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
+                    افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                    طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
+                    صورت می توان امید داشت که تمام و دشواری موجود در ارائه
+                    راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز
+                    شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل
+                    دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                  </p>
+                </div>
+                <div class="article-footer">
+                  <div class="categories">
+                    <span> <%= tag.title %> </span>
+                  </div>
+                  <div>
+                    <span class="gray-text">
+                      <i class="fa-regular fa-bookmark"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="article-cover">
+                <img
+                  src="http://localhost:4002/images/article/<%= article.cover %>"
+                  alt="Article title :)"
+                />
+              </div>
+            </article>
+            <% }) %> <% } %>
+          </div>
+        </div>
+      </section>
+      <div class="right-nav">
+        <div>
+          <div class="profile-card">
+            <img src="/images/admin.jpg" alt="" class="profile-picture" />
+            <div>
+              <p class="profile-name">پیمان احمدی</p>
+              <a href="/pages/dashboard/" class="go-to-dashboard">
+                ورود به پنل مدیریت
+              </a>
+            </div>
+          </div>
+          <div class="get-unlimitted">خرید اشتراک ویژه</div>
+
+          <div class="search-bar">
+            <input type="search" placeholder="جستجو کنید .." />
+          </div>
+          <div>
+            <div class="read-now">
+              <p class="live-circle"></p>
+              <span> محبوب ترین های امروز </span>
+            </div>
+
+            <div class="mini-articles">
+              <article class="mini-article">
+                <div class="article-author">
+                  <img
+                    src="/images/admin.jpg"
+                    alt="mini article"
+                    class="user-profile"
+                  />
+                  <div>
+                    <p>پیمان احمدی</p>
+                  </div>
+                </div>
+                <div class="article-caption-card">
+                  <a href="#">
+                    <p class="article-caption">
+                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                      و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه
+                      روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
+                      شرایط فعلی
+                    </p>
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <!-- FOOTER START -->
+    <div class="footer">
+      <div class="contain">
+        <div class="col">
+          <h1>Sabzlearn</h1>
+          <ul>
+            <li>آموزش</li>
+            <li>محصولات</li>
+            <li>بازخورد ها</li>
+            <li>گیتهاب</li>
+            <li>اینستاگرام</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h1>Courses</h1>
+          <ul>
+            <li>آموزش HTML</li>
+            <li>آموزش CSS</li>
+            <li>آموزش React JS</li>
+            <li>آموزش NodeJS</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h1>Accounts</h1>
+          <ul>
+            <li>ورود به حساب</li>
+            <li>بازیابی گذرواژه</li>
+            <li>ایجاد حساب کاربری</li>
+            <li>خرید اشتراک</li>
+            <li>تخفیفات</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h1>Resources</h1>
+          <ul>
+            <li>Webmail</li>
+            <li>Redeem code</li>
+            <li>WHOIS lookup</li>
+            <li>Site map</li>
+            <li>Web templates</li>
+            <li>Email templates</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h1>Support</h1>
+          <ul>
+            <li>Contact us</li>
+            <li>Web chat</li>
+            <li>Open ticket</li>
+          </ul>
+        </div>
+        <div class="col social"></div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <!-- END OF FOOTER -->
+  </body>
+</html>

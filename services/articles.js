@@ -55,7 +55,7 @@ exports.addTag = async (articleId, tagId) => {
 
 exports.getArticlesFromTag = async (tagId) => {
   try {
-    const query = `SELECT articles.id,articles.title , articles.content , articles.cover , articles.slug , users.username AS author , tags.title AS tag
+    const query = `SELECT articles.id,articles.title , articles.content , articles.cover , articles.slug , users.name AS author , tags.title AS tag
     FROM articles_tags
     INNER JOIN articles
     ON articles.id = articles_tags.article_id
@@ -65,8 +65,11 @@ exports.getArticlesFromTag = async (tagId) => {
     ON tags.id = articles_tags.tag_id
     WHERE articles_tags.tag_id = ?`;
 
-    const [articles] = await db.execute(query, [tagId]);
+    
 
+    const [articles] = await db.execute(query, [tagId]);
+    console.log(articles);
+    
     return articles;
   } catch (error) {
     next(error);

@@ -1,4 +1,5 @@
 const Tag = require("../services/tags");
+const Article = require("../services/articles");
 exports.create = async (req, res, next) => {
   try {
     const { title } = req.body;
@@ -39,8 +40,23 @@ exports.delete = async (req, res, next) => {
 
 exports.getRelativeTagArticle = async (req, res, next) => {
   try {
+    const { slug } = req.params;
+
+    if (!slug) {
+      return res.redirect("/");
+    }
+
+    const tag = await Tag.findByTitle(slug);
+
+    if (!tag) {
+      return res.redirect("/");
+    }
+
+    console.log(tag);
+
+    const articles = await Article.getArticlesFromTag(tag.id);
+    return res.render("tagArticles.ejs", { articles  , tag});
   } catch (error) {
     next(error);
   }
 };
-
