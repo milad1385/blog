@@ -387,8 +387,59 @@ nav {
   font-family: "IranSans-Medium";
 }
 
-.swal-footer {
+#modal-content {
+  width: 380px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+}
+
+#modal-content header {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 12px;
+}
+
+#modal-content header button {
+  background: transparent;
+}
+
+#modal-content main {
+  padding: 12px 0;
+  border-top: 1px solid rgb(212, 212, 212);
+  border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+#input {
+  display: block;
+  font-size: 12px;
+  height: 30px;
+  padding: 0 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  width: 94%;
+  border: 1px solid rgb(216, 216, 216);
+}
+
+label {
+  font-size: 12px;
+  color: gray;
+}
+
+#input::placeholder {
+  font-size: 12px !important;
+}
+
+#modal-content footer {
+  padding-top: 12px;
+}
+
+#create {
+  width: 100%;
+  height: 30px;
+  color: white;
+  background: rgb(0, 153, 255);
 }

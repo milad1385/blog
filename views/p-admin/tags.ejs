@@ -145,9 +145,13 @@
                       حذف
                     </button>
                   </form>
-                  <form action="" method="post">
-                    <button class="manage-button edit">ویرایش</button>
-                  </form>
+
+                  <button
+                    class="manage-button edit"
+                    onclick='showUpdateModal("<%= tag.title%>" , "<%= tag.id%>")'
+                  >
+                    ویرایش
+                  </button>
 
                   <form action="/tags/<%= tag.title%>" method="get">
                     <button type="submit" class="manage-button view">
@@ -165,8 +169,30 @@
       </section>
     </main>
 
-    <div class="modal-screen invisible">
-      <div class="modal-card"></div>
+    <div class="modal-screen invisible" id="update-tag-modal">
+      <div id="modal-content">
+        <header>
+          <span></span>
+          <span>ویرایش عنوان</span>
+          <button id="close" class="close-update-tag-modal">X</button>
+        </header>
+        <form method="post" action="/tags/update">
+          <main>
+            <label for="title">عنوان:</label>
+            <input type="hidden" name="id" id="tag-id" />
+            <input
+              type="text"
+              id="input"
+              class="tag-title"
+              name="title"
+              placeholder="عنوان جدید را وارد نمائید ..."
+            />
+          </main>
+          <footer>
+            <button id="create" type="submit">اعمال تغییرات</button>
+          </footer>
+        </form>
+      </div>
     </div>
 
     <script src="/js/sweetalert.js"></script>
@@ -184,6 +210,29 @@
           buttons: "اوکی",
         });
       }
+    </script>
+
+    <script>
+      const modalContainer = document.querySelector("#update-tag-modal");
+      const closeModalBtn = document.querySelector("#close");
+      const tagIdInput = document.querySelector("#tag-id");
+      const tagTitleInput = document.querySelector(".tag-title");
+
+      closeModalBtn.addEventListener("click", (e) => {
+        modalContainer.classList.add("invisible");
+      });
+
+      modalContainer.addEventListener("click", (e) => {
+        if (e.target.id !== "modal-content") {
+          modalContainer.classList.add("invisible");
+        }
+      });
+
+      const showUpdateModal = (title, id) => {
+        modalContainer.classList.remove("invisible");
+        tagTitleInput.value = title;
+        tagIdInput.value = id;
+      };
     </script>
   </body>
 </html>
